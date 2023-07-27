@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicios de Callbacks</title>
+</head>
+<body>
+    <h1>Ejercicios de Callbacks</h1>
+    <button onclick="ejercicio1()">Ejercicio 1</button>
+    <button onclick="ejercicio2()">Ejercicio 2</button>
+    <button onclick="ejercicio3()">Ejercicio 3</button>
+    <button onclick="ejercicio4()">Ejercicio 4</button>
+    <button onclick="ejercicio5()">Ejercicio 5</button>
+
+    <script>
+        // Ejercicio 1
+        function showMessage(message, callback) {
+            callback(message);
+        }
+
+        function ejercicio1() {
+            showMessage("Mensaje de prueba", console.warn);
+            showMessage("Mensaje de prueba", console.log);
+            showMessage("Mensaje de prueba", console.info);
+        }
+
+        // Ejercicio 2
+        function getVariableTypeAndPrintContent(variable, callback) {
+            const type = typeof variable;
+            callback(type, variable);
+        }
+
+        function ejercicio2() {
+            const variable = "Hola, soy una variable";
+            getVariableTypeAndPrintContent(variable, (type, content) => {
+                console.log(`Tipo de variable: ${type}`);
+                console.log(`Contenido: ${content}`);
+            });
+        }
+
+        // Ejercicio 3
+        function operateOnNumbers(num1, num2, callback) {
+            callback(num1, num2);
+        }
+
+        function sum(a, b) {
+            console.log("Suma:", a + b);
+        }
+
+        function subtract(a, b) {
+            console.log("Resta:", a - b);
+        }
+
+        function multiply(a, b) {
+            console.log("Multiplicación:", a * b);
+        }
+
+        function divide(a, b) {
+            console.log("División:", a / b);
+        }
+
+        function ejercicio3() {
+            const num1 = 10;
+            const num2 = 5;
+            operateOnNumbers(num1, num2, sum);
+            operateOnNumbers(num1, num2, subtract);
+            operateOnNumbers(num1, num2, multiply);
+            operateOnNumbers(num1, num2, divide);
+        }
+
+        // Ejercicio 4
+        function changeCase(str, callback) {
+            callback(str);
+        }
+
+        function toUpperCase(str) {
+            console.log("En mayúsculas:", str.toUpperCase());
+        }
+
+        function toLowerCase(str) {
+            console.log("En minúsculas:", str.toLowerCase());
+        }
+
+        function ejercicio4() {
+            const text = "PejeLagarto";
+            changeCase(text, toLowerCase);
+            changeCase(text, toUpperCase);
+        }
+
+        // Ejercicio 5
+        function filterByHours(timeArray, callback) {
+            const filteredArray = timeArray.filter(time => time >= 120);
+            callback(filteredArray);
+        }
+
+        function ejercicio5() {
+            const timeArray = [120, 80, 200, 100];
+            filterByHours(timeArray, result => {
+                console.log("Tiempos mayores o iguales a 2 horas:", result);
+            });
+        }
+    </script>
+</body>
+</html>
